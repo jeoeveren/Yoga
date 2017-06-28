@@ -1,4 +1,5 @@
 @shopping_cart = []
+selected_departments = []
 
 @departments = [ :mats, :props, :clothes, :books ]
 
@@ -20,3 +21,18 @@
     { reference_number: 1238, name: "Light On Yoga", price: 10 },
   ]
 }
+
+@departments.each_with_index do |department, index|
+  selected_departments << department
+  # for now I select the first 2
+  if index == 1
+    break
+  end
+end
+
+for index in 0...selected_departments.length
+
+  @products.select { |products| products["#{selected_departments[index]}"] }.each do | item |
+    puts item[:name]
+  end
+end
